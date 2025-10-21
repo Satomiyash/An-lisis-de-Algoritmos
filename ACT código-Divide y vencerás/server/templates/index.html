@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Servidor de Archivos</title>
+</head>
+<body>
+    <h1>Archivos en el servidor</h1>
+    
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <button type="submit">Subir archivo</button>
+    </form>
+    
+    <ul>
+    {% for file in files %}
+        <li>
+            {{ file }}
+            <a href="/download/{{ file }}">Descargar</a>
+            <form action="/delete/{{ file }}" method="post" style="display:inline;">
+                <button type="submit">Eliminar</button>
+            </form>
+        </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
